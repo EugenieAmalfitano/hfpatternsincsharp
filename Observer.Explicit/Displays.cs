@@ -25,8 +25,8 @@ namespace WeatherOMatic_Explicit
 
         public void Display()
         {
-            Console.WriteLine("Current conditions: {0}F degrees and {1}% humidity.",
-                this.readings.temperature, this.readings.humidity);
+            Console.WriteLine("Current conditions: {0}F degrees and {1}% humidity, pressure is {2} millibars.",
+                this.readings.temperature, this.readings.humidity,this.readings.pressure);
         }
 
         #endregion
@@ -119,9 +119,10 @@ namespace WeatherOMatic_Explicit
 
         public void Display()
         {
-            Console.WriteLine("Forecast: {0}F degress and {1}% humidity.",
+            Console.WriteLine("Forecast: {0}F degress and {1}% humidity, pressure is {2} millibars.",
                 this.readings.temperature + 13.3,
-                this.readings.humidity - 13.3);
+                this.readings.humidity - 13.3,
+                this.readings.pressure +13.3);
         }
 
         #endregion
