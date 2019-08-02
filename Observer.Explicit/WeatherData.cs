@@ -10,6 +10,9 @@ namespace WeatherOMatic_Explicit
         public float temperature;
         public float humidity;
         public float pressure;
+        public float minTemp;
+        public float maxTemp;
+        public float avgTemp;
     }
 
     class WeatherData : ISubject
@@ -26,6 +29,9 @@ namespace WeatherOMatic_Explicit
         public void UpdateReadings(WeatherMeasurements newReadings)
         {
             this.readings = newReadings;
+            if (this.readings.temperature > this.readings.maxTemp) this.readings.maxTemp = this.readings.temperature;
+            if (this.readings.temperature < this.readings.minTemp) this.readings.minTemp = this.readings.temperature;
+            this.readings.avgTemp = (this.readings.minTemp + this.readings.maxTemp) / 2;
             HasChanged();
         }
 

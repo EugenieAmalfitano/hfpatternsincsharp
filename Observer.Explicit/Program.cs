@@ -17,21 +17,24 @@ namespace WeatherOMatic_Explicit
 
             // create the readings
             WeatherMeasurements readings = new WeatherMeasurements();
-            readings.humidity = 40.5F;
-            readings.pressure = 20F;
-            readings.temperature = 72F;
-
-            // update the readings - everyone should print
+            readings.temperature = 80F;
+            readings.humidity = 65F;
+            readings.pressure = 29.92F; 
+            readings.minTemp = 80F;
+            readings.maxTemp = 80F;
+            readings.avgTemp = 80F;
             weatherData.UpdateReadings(readings);
 
             // update
-            readings.pressure = 10F;
+            readings.temperature = 82F;
+            readings.humidity = 70F;
+            readings.pressure = 30.0F;
             weatherData.UpdateReadings(readings);
 
             // update
-            readings.humidity = 100;
-            readings.temperature = 212.75F;
-            readings.pressure = 950;
+            readings.temperature = 78F;
+            readings.humidity = 90F;
+            readings.pressure = 31.0F;
             weatherData.UpdateReadings(readings);
 
             Console.ReadLine();

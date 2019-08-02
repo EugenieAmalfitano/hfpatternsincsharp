@@ -72,8 +72,8 @@ namespace WeatherOMatic_Explicit
 
         public void Display()
         {
-            Console.WriteLine("Statistic: Sum of values: {0}.",
-                this.readings.temperature + this.readings.humidity + this.readings.pressure);
+            Console.WriteLine("Temperature Statistics: Min {0} / Max {1} / Avg {2}",
+                this.readings.minTemp, this.readings.maxTemp , this.readings.avgTemp);
         }
 
         #endregion
@@ -119,10 +119,11 @@ namespace WeatherOMatic_Explicit
 
         public void Display()
         {
-            Console.WriteLine("Forecast: {0}F degress and {1}% humidity, pressure is {2} millibars.",
-                this.readings.temperature + 13.3,
-                this.readings.humidity - 13.3,
-                this.readings.pressure +13.3);
+            string forecastMsg = "";
+            if (this.readings.temperature > 80)  forecastMsg = "Watch for cooler, rainy weather.";
+            else if (this.readings.temperature < 80) forecastMsg = "The weather is perfect.";
+            else forecastMsg = "Weather is improving.";
+            Console.WriteLine("The forecast is: " + forecastMsg); 
         }
 
         #endregion
