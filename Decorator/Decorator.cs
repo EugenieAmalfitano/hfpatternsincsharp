@@ -20,7 +20,7 @@ namespace Decorator
     {
         public AfricanBlend()
         {
-            this.description = "AfricanBlend";
+            this.description = "African Blend";
         }
 
         public override double GetCost()
@@ -57,13 +57,32 @@ namespace Decorator
 
         public override string GetDescription()
         {
-            return this.beverage.GetDescription() + ", Cream " +
-                this.GetCost();
+            return this.beverage.GetDescription() + " + Cream";
         }
 
         public override double GetCost()
         {
             return 0.20 + this.beverage.GetCost();
+        }
+    }
+
+    public class Caramel : CondimentDecorator
+    {
+        Beverage beverage;
+
+        public Caramel(Beverage newBeverage)
+        {
+            this.beverage = newBeverage;
+        }
+
+        public override string GetDescription()
+        {
+            return this.beverage.GetDescription() + " + Caramel";
+        }
+
+        public override double GetCost()
+        {
+            return 0.75 + this.beverage.GetCost();
         }
     }
 }

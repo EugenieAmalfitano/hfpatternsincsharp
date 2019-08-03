@@ -1,58 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace Decorator
 {
-    class UpperCaseTextReader
-    {
-        TextReader myTextReader;
-
-        UpperCaseTextReader(TextReader newTextReader)
-        {
-            this.myTextReader = newTextReader;
-        }
-
-        public string ReadToEnd()
-        {
-            return (myTextReader.ReadToEnd().ToUpper());
-
-            // example
-            //UpperCaseTextReader reader =
-            //    new UpperCaseTextReader(new TextReader(
-            //        new FileStream(path)));
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
         {
             Beverage bev = new AfricanBlend();
-            Console.WriteLine(
-                String.Format("{0} - ${1}",
-                    bev.GetDescription(),
-                    bev.GetCost()));
+            // Plain African Blend
+            ShowBeverage(bev);
+
+            bev = new Cream(bev);
+            // African Blend with cream
+            ShowBeverage(bev);
 
             bev = new HouseBlend();
-            Console.WriteLine(
-                String.Format("{0} - ${1}",
-                    bev.GetDescription(),
-                    bev.GetCost()));
+            // Plain House Blend
+            ShowBeverage(bev);
+
+            // House blend with 2x cream
 
             bev = new Cream(bev);
-            Console.WriteLine(
-                String.Format("{0} - ${1}",
-                    bev.GetDescription(),
-                    bev.GetCost()));
-
             bev = new Cream(bev);
+            ShowBeverage(bev);
+
+            // African blend with 2 x cream and caramel
+            bev = new AfricanBlend();
+            bev = new Cream(bev);
+            bev = new Caramel(bev);
+            ShowBeverage(bev);
+            Console.ReadLine();          
+        }
+
+        static void ShowBeverage(Beverage bev)
+        {
             Console.WriteLine(
-                String.Format("{0} - ${1}",
-                    bev.GetDescription(),
-                    bev.GetCost()));
-            Console.ReadLine();
+                          String.Format("{0,-50} ${1,-6}",
+                              bev.GetDescription(),
+                              bev.GetCost()));
         }
     }
 }
