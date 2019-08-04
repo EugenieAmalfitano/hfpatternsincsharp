@@ -61,7 +61,7 @@ namespace Decorator
 
     public class Cream : CondimentDecorator
     {
-        Beverage beverage;
+        readonly Beverage beverage;
 
         public Cream(Beverage newBeverage)
         {
@@ -80,13 +80,15 @@ namespace Decorator
 
         public override double GetCost()
         {
-            return 0.20 + beverage.GetCost();
+            double[] sizeCost = new double[] { .10, .15, .20};
+            int i = (int)beverage.getSize();
+            return sizeCost[i] + beverage.GetCost();
         }
     }
 
     public class Caramel : CondimentDecorator
     {
-        Beverage beverage;
+        readonly Beverage beverage;
 
         public Caramel(Beverage newBeverage)
         {
@@ -105,7 +107,9 @@ namespace Decorator
 
         public override double GetCost()
         {
-            return 0.75 + beverage.GetCost();
+            double[] sizeCost = new double[] { .60, .75, .90 };
+            int i = (int)beverage.getSize();
+            return sizeCost[i] + beverage.GetCost();
         }
     }
 }

@@ -9,30 +9,30 @@ namespace Decorator
         {
             Beverage bev = new AfricanBlend
             {
-                size = Beverage.Size.GRANDE
+                size = Beverage.Size.TALL
             };
 
-            // Plain African Blend
+            // Tall Plain African Blend
             ShowBeverage(bev);
 
             bev = new Cream(bev);
-            // African Blend with cream
+            // Grande African Blend with cream
             ShowBeverage(bev);
 
             bev = new HouseBlend
             {
-                size = Beverage.Size.TALL
+                size = Beverage.Size.GRANDE
             };
             // Plain House Blend
             ShowBeverage(bev);
 
-            // House blend with 2x cream
+            // Grande House blend with 2x cream
 
             bev = new Cream(bev);
             bev = new Cream(bev);
             ShowBeverage(bev);
 
-            // African blend with 2 x cream and caramel
+            // Venti African blend with 2 x cream and caramel
             bev = new AfricanBlend
             {
                 size = Beverage.Size.VENTI
