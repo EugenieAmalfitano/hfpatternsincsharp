@@ -7,27 +7,25 @@ namespace Decorator
     {
         static void Main(string[] args)
         {
+            // Tall Plain African Blend
             Beverage bev = new AfricanBlend
             {
                 size = Beverage.Size.TALL
             };
-
-            // Tall Plain African Blend
             ShowBeverage(bev);
 
-            bev = new Cream(bev);
             // Grande African Blend with cream
+            bev = new Cream(bev);    
             ShowBeverage(bev);
 
+            // Grande Plain House Blend
             bev = new HouseBlend
             {
                 size = Beverage.Size.GRANDE
             };
-            // Plain House Blend
             ShowBeverage(bev);
 
             // Grande House blend with 2x cream
-
             bev = new Cream(bev);
             bev = new Cream(bev);
             ShowBeverage(bev);
@@ -40,6 +38,7 @@ namespace Decorator
             bev = new Cream(bev);
             bev = new Caramel(bev);
             ShowBeverage(bev);
+
             Console.ReadLine();          
         }
 
