@@ -6,13 +6,26 @@ namespace Decorator
 {
     public abstract class Beverage
     {
+        public enum Size { TALL, GRANDE, VENTI};
+        public Size size;
+
         public string description = "Unknown Beverage";
 
         public virtual string GetDescription()
         {
-            return this.description;
+            return description;
         }
 
+        public void setSize(Size size)
+        {
+            this.size = size;
+        }
+
+        public virtual Size getSize()
+        {
+            return size;
+        }
+        
         public abstract double GetCost();
     }
 
@@ -20,7 +33,7 @@ namespace Decorator
     {
         public AfricanBlend()
         {
-            this.description = "African Blend";
+            description = "African Blend";
         }
 
         public override double GetCost()
@@ -33,7 +46,7 @@ namespace Decorator
     {
         public HouseBlend()
         {
-            this.description = "House Blend";
+            description = "House Blend";
         }
 
         public override double GetCost()
@@ -52,17 +65,22 @@ namespace Decorator
 
         public Cream(Beverage newBeverage)
         {
-            this.beverage = newBeverage;
+            beverage = newBeverage;
+        }
+
+        public override Size getSize()
+        {
+            return beverage.getSize();
         }
 
         public override string GetDescription()
         {
-            return this.beverage.GetDescription() + " + Cream";
+            return beverage.GetDescription() + " + Cream";
         }
 
         public override double GetCost()
         {
-            return 0.20 + this.beverage.GetCost();
+            return 0.20 + beverage.GetCost();
         }
     }
 
@@ -72,17 +90,22 @@ namespace Decorator
 
         public Caramel(Beverage newBeverage)
         {
-            this.beverage = newBeverage;
+            beverage = newBeverage;
+        }
+
+        public override Size getSize()
+        {
+            return beverage.getSize();
         }
 
         public override string GetDescription()
         {
-            return this.beverage.GetDescription() + " + Caramel";
+            return beverage.GetDescription() + " + Caramel";
         }
 
         public override double GetCost()
         {
-            return 0.75 + this.beverage.GetCost();
+            return 0.75 + beverage.GetCost();
         }
     }
 }

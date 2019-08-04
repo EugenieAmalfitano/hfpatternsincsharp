@@ -7,7 +7,11 @@ namespace Decorator
     {
         static void Main(string[] args)
         {
-            Beverage bev = new AfricanBlend();
+            Beverage bev = new AfricanBlend
+            {
+                size = Beverage.Size.GRANDE
+            };
+
             // Plain African Blend
             ShowBeverage(bev);
 
@@ -15,7 +19,10 @@ namespace Decorator
             // African Blend with cream
             ShowBeverage(bev);
 
-            bev = new HouseBlend();
+            bev = new HouseBlend
+            {
+                size = Beverage.Size.TALL
+            };
             // Plain House Blend
             ShowBeverage(bev);
 
@@ -26,7 +33,10 @@ namespace Decorator
             ShowBeverage(bev);
 
             // African blend with 2 x cream and caramel
-            bev = new AfricanBlend();
+            bev = new AfricanBlend
+            {
+                size = Beverage.Size.VENTI
+            };
             bev = new Cream(bev);
             bev = new Caramel(bev);
             ShowBeverage(bev);
@@ -36,7 +46,8 @@ namespace Decorator
         static void ShowBeverage(Beverage bev)
         {
             Console.WriteLine(
-                          String.Format("{0,-50} ${1,-6}",
+                          String.Format("{0,-10} {1,-50} ${2,-6}",
+                              bev.getSize(),
                               bev.GetDescription(),
                               bev.GetCost()));
         }
